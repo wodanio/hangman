@@ -6,7 +6,7 @@ public class TestWindow {
 
 		System.out.print("test start");
 		
-		MainWindow.startWindow();
+		StartWindow.main();
 
 	}
 
