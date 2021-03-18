@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class event {
 
-	public static void main(String[] args) {
+	public event() {
 		
 		Scanner s = new Scanner(System.in);
 		String x;
@@ -13,6 +13,7 @@ public class event {
 	System.out.println("Wähle einen Buchstaben");
 	
 	x = s.next();
+	
 	
 	System.out.println(x);
 	}
