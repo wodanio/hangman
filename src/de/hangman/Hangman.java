@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class Hangman {
 	
 	public static void main(String[] args) throws Exception {
-		File Wordliste = new File("D:\\Daten\\Tobias\\Informatik 12T3\\wortliste.txt");
+		File Wordliste = new File("src\\wortliste.txt");
 		
 		Scanner textScanner = new Scanner(Wordliste);
 		Scanner input = new Scanner(System.in);
@@ -28,17 +28,15 @@ public class Hangman {
 		boolean finished = false;
 				
 		while(finished == false) {
-			System.out.println("**************************");
+			
 			
 			String letter = input.next();
 			//Auf Eingabe überprüfen
-			while(letter.length() != 1|| Character.isDigit(letter.charAt(0))) {
-				System.out.println("Falscher Buchstabe - Versuchs erneut :) ");
-				letter = input.next();
+		System.out.println(hidden_text);	
 			}
-			//Schauen ob der Buchstabe im Wort ist
 			
-		}
+					
+				}	
 	}
 
-}
+
