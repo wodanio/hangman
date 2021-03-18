@@ -21,22 +21,13 @@ public class Hangman {
 		String hidden_text = words.get((int)(Math.random()*words.size()));
 		char[] textArray = hidden_text.toCharArray();
 		
-		char[] myAnswers = new char[textArray.length];
-		for(int i = 0; i < textArray.length; i++) {
-			myAnswers[i] = '?';
-		}
-		boolean finished = false;
-				
-		while(finished == false) {
+		
 			
-			
-			String letter = input.next();
-			//Auf Eingabe überprüfen
-		System.out.println(hidden_text);	
+		System.out.println(hidden_text.toCharArray());	
 			}
 			
 					
 				}	
-	}
+	
 
 
