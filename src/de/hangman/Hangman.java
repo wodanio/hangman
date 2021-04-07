@@ -4,30 +4,19 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import de.hangman.wordManagement.wordManagement;
+
 
 
 public class Hangman {
 	
 	public static void main(String[] args) throws Exception {
-		File Wordliste = new File("src\\wortliste.txt");
+
+		wordManagement wm = new wordManagement( "input", "testWort" );
 		
-		Scanner textScanner = new Scanner(Wordliste);
-		Scanner input = new Scanner(System.in);
+		System.out.println( wm.getWordArray() );
 		
-		ArrayList<String> words = new ArrayList<>();
-		while(textScanner.hasNextLine()) {
-			words.add(textScanner.nextLine());
-		}
-		String hidden_text = words.get((int)(Math.random()*words.size()));
-		char[] textArray = hidden_text.toCharArray();
-		
-		
-			
-		System.out.println(hidden_text.toCharArray());	
-			}
+	}
 			
 					
-				}	
-	
-
-
+}
