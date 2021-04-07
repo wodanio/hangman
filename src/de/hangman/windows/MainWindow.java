@@ -1,8 +1,13 @@
 package de.hangman.windows;
 
+import java.awt.Color;
 import java.awt.Container;
 import java.awt.Font;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Arrays;
+
 import javax.swing.*;
 
 public class MainWindow {
@@ -37,7 +42,10 @@ public class MainWindow {
 		wortpanel.setBounds(10, 160, 425, 50);
 		
 		JTextField field = new JTextField("TestText", 15);
+		
+		//Tobi (grafic)0
 		JLabel figur = new JLabel(new ImageIcon(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Kai\\Desktop\\figur.png")));
+		
 		JButton button = new JButton("Los!");
 		
 		grafikpanel.add(figur);
@@ -61,9 +69,10 @@ public class MainWindow {
 		        buchstabenpanel2.add(letter[i]);
 	    };
 	    
-	    //Länge vom Wort = Striche für Wort
+	    //Gesuchtes Wort (Tobi Wordmanagement)
 		String[] Wort = {"T", "E", "S", "T"};
 		
+		//Länge vom Wort = Striche für Wort
 		int länge = Wort.length;
 		JLabel[] goal = new JLabel[länge];
 		for(int i = 0; i < länge; i++) {
@@ -82,6 +91,29 @@ public class MainWindow {
 		main.setSize(440, 460);
 		main.setLocationRelativeTo(null);
 		main.setVisible(true);		
+		
+		//ActionListener Los-Button Jona (Events)
+		button.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+						
+				String Eingabe = field.getText().toUpperCase();
+						
+				//Buchstaben rot färben
+				for(int i=0; i < 26; i++) {
+						
+					if(Eingabe.equalsIgnoreCase(letter[i].getText())){
+						
+						if(Arrays.asList(Wort).contains(Eingabe)) {
+							letter[i].setForeground(Color.GREEN);
+						}else {
+							letter[i].setForeground(Color.RED);
+						};
+								
+					};
+				};
+			};
+		});
+				
 	}
 
 }
