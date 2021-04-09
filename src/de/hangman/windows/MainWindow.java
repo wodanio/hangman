@@ -41,7 +41,7 @@ public class MainWindow {
 		JPanel wortpanel = new JPanel();
 		wortpanel.setBounds(10, 160, 425, 50);
 		
-		JTextField field = new JTextField("TestText", 15);
+		JTextField field = new JTextField("", 15);
 		
 		//Tobi (grafic)0
 		JLabel figur = new JLabel(new ImageIcon(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Kai\\Desktop\\figur.png")));
