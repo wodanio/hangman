@@ -53,6 +53,7 @@ public static void main(String[] args) {
 		fehler.setVisible(false);
 		
 		//ActionListener Los-Button
+		
 		boolean start = false;
 	
 		button.addActionListener(new ActionListener(){
@@ -74,6 +75,7 @@ public static void main(String[] args) {
 			}
 		});
 		
+		//Menu ItemListener
 		menu.addItemListener(new ItemListener(){
 			public void itemStateChanged(ItemEvent e) {
 				
@@ -88,9 +90,15 @@ public static void main(String[] args) {
 			
 		});
 		
-		//Funktion zum schlieﬂen
-		
+		//Fehler-Fenster Ok Button Action Listener
+		fehlerbutton.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				
+				fehler.dispose();
+				
+			}
+		});
 
 	}
-
+	
 }
