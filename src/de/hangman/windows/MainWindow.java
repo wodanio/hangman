@@ -18,7 +18,7 @@ public class MainWindow {
 		JFrame main = new JFrame();
 		
 		//Grundlegende Eigenschaften vom main-Fenster festlegen
-		main.setResizable(true);
+		main.setResizable(false);
 		main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		//Ab Hier: Content ins Fenster
@@ -96,14 +96,15 @@ public class MainWindow {
 		button.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
 						
-				String Eingabe = field.getText().toUpperCase();
-						
+				String Eingabe = field.getText();
+				field.setText("");
+				
 				//Buchstaben rot färben
 				for(int i=0; i < 26; i++) {
 						
 					if(Eingabe.equalsIgnoreCase(letter[i].getText())){
 						
-						if(Arrays.asList(Wort).contains(Eingabe)) {
+						if(Arrays.asList(Wort).contains(Eingabe.toUpperCase())) {
 							letter[i].setForeground(Color.GREEN);
 						}else {
 							letter[i].setForeground(Color.RED);
@@ -112,8 +113,9 @@ public class MainWindow {
 					};
 				};
 			};
+			
 		});
-				
+	
 	}
-
+	
 }
