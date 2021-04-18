@@ -16,6 +16,7 @@ public class MainWindow {
 		
 		//Fenster main erstellen
 		JFrame main = new JFrame();
+		JFrame ende = new JFrame();
 		
 		//Grundlegende Eigenschaften vom main-Fenster festlegen
 		main.setResizable(false);
@@ -40,10 +41,25 @@ public class MainWindow {
 		//Panel für Leere Felder/Das Wort
 		JPanel wortpanel = new JPanel();
 		wortpanel.setBounds(10, 160, 425, 50);
-		
+
 		JTextField field = new JTextField("", 15);
 		
-		//Tobi (grafic)0
+		
+		//Content erstellen (ende)
+		JPanel endepanel = new JPanel();
+				
+		JLabel endetext = new JLabel("");
+		JButton endebutton = new JButton("Ja!");
+				
+		endepanel.add(endetext);
+		endepanel.add(endebutton);
+				
+		ende.add(endepanel);
+		ende.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		ende.setVisible(false);
+		
+		
+		//Tobi (grafic)
 		JLabel figur = new JLabel(new ImageIcon(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Kai\\Desktop\\figur.png")));
 		
 		JButton button = new JButton("Los!");
@@ -92,7 +108,7 @@ public class MainWindow {
 		main.setLocationRelativeTo(null);
 		main.setVisible(true);		
 		
-		//ActionListener Los-Button Jona (Events)
+		//ActionListener Los-Button, Jona (Events)
 		button.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
 						
@@ -114,6 +130,35 @@ public class MainWindow {
 				};
 			};
 			
+		});
+		
+		//Wenn spiel vorbei (Events Jona)
+		boolean spielende = true;
+		boolean gewonnen = true;
+		
+		if(spielende == true) {
+			
+			if(gewonnen == true) {
+				endetext.setText("Du hast das Spiel gewonnen! Möchtest du das Programm neustarten?");
+				ende.pack();
+				ende.setLocationRelativeTo(null);
+				ende.setVisible(true);
+			}else {
+				endetext.setText("Du hast leider verloren! Möchtest du das Programm neustarten?");
+				ende.pack();
+				ende.setLocationRelativeTo(null);
+				ende.setVisible(true);
+			};
+		};
+		
+		//ActionListener Neustart-Button am Ende, Jona (Events)
+		endebutton.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+			
+				boolean neustart = true;
+				
+			};
+					
 		});
 	
 	}
