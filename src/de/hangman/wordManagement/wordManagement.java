@@ -15,8 +15,8 @@ public class wordManagement {
 	}
 	
 	public wordManagement ( String type, String word ) {
-		this.type = type;
-		this.word = word;
+		this.type = type;				// Position
+		this.word = word;				// Buchstabe/ Wort
 	}
 	
 	private char[] checkInput () {
@@ -55,3 +55,7 @@ public class wordManagement {
 	}
 
 }
+
+// Sonderzeichen entfernen
+// string type = preg_replace('/[^\pL\d\s]+/u', '', string type);
+// string word = preg_replace('/[^\pL\d\s]+/u', '', string word);
