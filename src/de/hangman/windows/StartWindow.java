@@ -9,12 +9,14 @@ public static void main(String[] args) {
 		
 		//Fenster window erstellen
 		JFrame window = new JFrame("Galgenmännchen");
+		JFrame fehler = new JFrame("Fehler");
 			
 		//Eigenschaften window
 		window.setResizable(false);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		fehler.setResizable(false);
 		
-		//Content erstellen
+		//Content erstellen (window)
 		JPanel panel = new JPanel();
 		
 		JLabel text1 = new JLabel("Herzlich Willkommen zu Galgenmännchen!");
@@ -36,17 +38,44 @@ public static void main(String[] args) {
 		window.setLocationRelativeTo(null);
 		window.setVisible(true);
 		
+		//Content erstellen (fehler)
+		JPanel fehlerpanel = new JPanel();
+		
+		JLabel fehlertext = new JLabel("Bitte ein Wort eingeben!");
+		JButton fehlerbutton = new JButton("Ok!");
+		
+		fehlerpanel.add(fehlertext);
+		fehlerpanel.add(fehlerbutton);
+		
+		fehler.add(fehlerpanel);
+		fehler.pack();
+		fehler.setLocationRelativeTo(null);
+		fehler.setVisible(false);
+		
 		//ActionListener Los-Button
+		
+		boolean start = false;
+	
 		button.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
-				if(menu.getSelectedItem().toString() == "Automatisch"){
-					//Wenn Modus=Automatisch dann:
+				
+				if(menu.getSelectedItem().toString().equals("Automatisch")){
+					String modus = "Automatisch";
+					boolean start = true;
 				}else {
-					//Wenn Modus=Manuell dann:
+					
+					if(field.getText().equals("")) {
+						fehler.setVisible(true);
+					}else {
+						String modus = "Manuell";
+						String eingabe = field.getText();
+						boolean start = true;
+					}
 				}
 			}
 		});
 		
+		//Menu ItemListener
 		menu.addItemListener(new ItemListener(){
 			public void itemStateChanged(ItemEvent e) {
 				
@@ -60,7 +89,16 @@ public static void main(String[] args) {
 			}
 			
 		});
+		
+		//Fehler-Fenster Ok Button Action Listener
+		fehlerbutton.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				
+				fehler.dispose();
+				
+			}
+		});
 
 	}
-
+	
 }
