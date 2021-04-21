@@ -1,45 +1,47 @@
 package de.hangman;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Scanner;
-
-
+import de.hangman.event.Event;
+import de.hangman.windows.GameWindow;
+import de.hangman.windows.StartWindow;
+import de.hangman.wordManagement.wordManagement;
 
 public class Hangman {
 	
-	public static void main(String[] args) throws Exception {
-		File Wordliste = new File("src\\wortliste.txt");
-		
-		Scanner textScanner = new Scanner(Wordliste);
-		Scanner input = new Scanner(System.in);
-		
-		ArrayList<String> words = new ArrayList<>();
-		while(textScanner.hasNextLine()) {
-			words.add(textScanner.nextLine());
-		}
-		String hidden_text = words.get((int)(Math.random()*words.size()));
-		char[] textArray = hidden_text.toCharArray();
-		
-		
-<<<<<<< HEAD
-<<<<<<< HEAD
-		int test = 1 + 1;
-
-		System.out.println( test );
-		
-=======
-		System.out.print( "This is Hangman" );
->>>>>>> 13470ed68abbb4f158cf6287895ad44d74873cd9
-	}
-=======
-			
-		System.out.println(hidden_text.toCharArray());	
-			}
-			
-					
-				}	
+	/*private static char[] wordArray;
 	
+	private static StartWindow win_start;
+	private static GameWindow win_main;
+	private static wordManagement wm;
+	private static Event ev;*/
+	
+	public static void main(String[] args) {
 
->>>>>>> e2fd2452df4e76d3b07ae337ac6f3881ae3a1dc6
-
+		//win_start = new StartWindow();
+		//win_main = new GameWindow();
+		
+		System.out.println( "TEST" );
+		
+	}
+	
+	public static void startGame ( String type, String value ) throws Exception {
+		
+		/*win_start.exit();
+		
+		wm = new wordManagement( type, value );
+		wordArray = wm.getWordArray();
+		
+		//System.out.print( wordArray );
+		
+		win_main.startUp();*/
+		
+		//ev = new Event( win_main.main );
+		
+	}
+	
+	public static void action ( char letter ) {
+		
+		
+		
+	}
+	
+}

@@ -3,24 +3,39 @@ package de.hangman.windows;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class StartWindow {
+import de.hangman.Hangman;
 
-public static void main(String[] args) {
+public class StartWindow {
+	
+	private JFrame window;
+	
+	public StartWindow() {
+		
+		this.window = new JFrame("Galgenm√§nnchen");
+		
+		this.init();
+		
+	}
+	
+	public void exit () {
+		this.window.dispose();
+	}
+
+	private void init() {
 		
 		//Fenster window erstellen
-		JFrame window = new JFrame("Galgenm‰nnchen");
 		JFrame fehler = new JFrame("Fehler");
 			
 		//Eigenschaften window
-		window.setResizable(false);
-		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.window.setResizable(false);
+		this.window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		fehler.setResizable(false);
 		
 		//Content erstellen (window)
 		JPanel panel = new JPanel();
 		
-		JLabel text1 = new JLabel("Herzlich Willkommen zu Galgenm‰nnchen!");
-		JLabel text2 = new JLabel("Mˆchtest du selbst ein Wort fetslegen oder ein zuf‰lliges Wort ausw‰hlen lassen?");
+		JLabel text1 = new JLabel("Herzlich Willkommen zu Galgenm√§nnchen!");
+		JLabel text2 = new JLabel("M√∂chtest du selbst ein Wort fetslegen oder ein zuf√§lliges Wort ausw√§hlen lassen?");
 		JButton button = new JButton("Los Gehts!");
 		String menuliste[] = {"Automatisch", "Manuell"};
 		JComboBox menu = new JComboBox(menuliste);
@@ -33,10 +48,10 @@ public static void main(String[] args) {
 		panel.add(field);
 		panel.add(button);
 		
-		window.add(panel);
-		window.setSize(550, 125);
-		window.setLocationRelativeTo(null);
-		window.setVisible(true);
+		this.window.add(panel);
+		this.window.setSize(550, 125);
+		this.window.setLocationRelativeTo(null);
+		this.window.setVisible(true);
 		
 		//Content erstellen (fehler)
 		JPanel fehlerpanel = new JPanel();
@@ -53,25 +68,24 @@ public static void main(String[] args) {
 		fehler.setVisible(false);
 		
 		//ActionListener Los-Button
-		
-		boolean start = false;
 	
 		button.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
 				
-				if(menu.getSelectedItem().toString().equals("Automatisch")){
-					String modus = "Automatisch";
-					boolean start = true;
-				}else {
-					
-					if(field.getText().equals("")) {
-						fehler.setVisible(true);
+				try {
+					if(menu.getSelectedItem().toString().equals("Automatisch")){
+						Hangman.startGame( "auto", "" );
 					}else {
-						String modus = "Manuell";
-						String eingabe = field.getText();
-						boolean start = true;
+						if(field.getText().equals("")) {
+							fehler.setVisible(true);
+						}else {
+							Hangman.startGame( "manual", field.getText() );
+						}
 					}
+				} catch ( Exception e1 ) {
+					System.err.println( e1 );
 				}
+				
 			}
 		});
 		

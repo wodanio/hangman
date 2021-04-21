@@ -11,34 +11,48 @@ import java.util.Arrays;
 import javax.swing.*;
 
 public class MainWindow {
+	
+	
+	public JFrame main;
+	private JFrame ende;
+	private JLabel figur;
+	
+	
+	public MainWindow () {
+		
+	}
+	
+	public void startUp () {
+		this.init();
+	}
 
-	public static void main(String[] args) {
+	private void init () {
 		
 		//Fenster main erstellen
-		JFrame main = new JFrame();
-		JFrame ende = new JFrame();
+		this.main = new JFrame();
+		this.ende = new JFrame();
 		
 		//Grundlegende Eigenschaften vom main-Fenster festlegen
-		main.setResizable(false);
-		main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.main.setResizable(false);
+		this.main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		//Ab Hier: Content ins Fenster
-	    Container cp = main.getContentPane();
+	    Container cp = this.main.getContentPane();
 	    cp.setLayout(null);
 		
-	    //Panel für Grafik
+	    //Panel fï¿½r Grafik
 		JPanel grafikpanel = new JPanel();
 		grafikpanel.setBounds(145, 5, 150, 150);
-		//Panel für Textfeld und Button
+		//Panel fï¿½r Textfeld und Button
 		JPanel steuerpanel = new JPanel();
 		steuerpanel.setBounds(115, 220, 250, 35);
-		//Panel für Buchstaben 1
+		//Panel fï¿½r Buchstaben 1
 		JPanel buchstabenpanel1 = new JPanel();
 		buchstabenpanel1.setBounds(20, 280, 420, 40);
-		//Panel für Buchstaben 2
+		//Panel fï¿½r Buchstaben 2
 		JPanel buchstabenpanel2 = new JPanel();
 		buchstabenpanel2.setBounds(2, 320, 420, 50);
-		//Panel für Leere Felder/Das Wort
+		//Panel fï¿½r Leere Felder/Das Wort
 		JPanel wortpanel = new JPanel();
 		wortpanel.setBounds(10, 160, 425, 50);
 
@@ -54,9 +68,9 @@ public class MainWindow {
 		endepanel.add(endetext);
 		endepanel.add(endebutton);
 				
-		ende.add(endepanel);
-		ende.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		ende.setVisible(false);
+		this.ende.add(endepanel);
+		this.ende.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.ende.setVisible(false);
 		
 		
 		//Tobi (grafic)
@@ -88,25 +102,25 @@ public class MainWindow {
 	    //Gesuchtes Wort (Tobi Wordmanagement)
 		String[] Wort = {"T", "E", "S", "T"};
 		
-		//Länge vom Wort = Striche für Wort
-		int länge = Wort.length;
-		JLabel[] goal = new JLabel[länge];
-		for(int i = 0; i < länge; i++) {
+		//Lï¿½nge vom Wort = Striche fï¿½r Wort
+		int lange = Wort.length;
+		JLabel[] goal = new JLabel[lange];
+		for(int i = 0; i < lange; i++) {
 			goal[i] = new JLabel("_");
 			Font font = new Font("Arial", Font.PLAIN, 42);
 			goal[i].setFont(font);
 			wortpanel.add(goal[i]);
 		}
 		
-		main.add(grafikpanel);
-		main.add(wortpanel);
-		main.add(steuerpanel);
-		main.add(buchstabenpanel1);
-		main.add(buchstabenpanel2);
+		this.main.add(grafikpanel);
+		this.main.add(wortpanel);
+		this.main.add(steuerpanel);
+		this.main.add(buchstabenpanel1);
+		this.main.add(buchstabenpanel2);
 		
-		main.setSize(440, 460);
-		main.setLocationRelativeTo(null);
-		main.setVisible(true);		
+		this.main.setSize(440, 460);
+		this.main.setLocationRelativeTo(null);
+		this.main.setVisible(true);		
 		
 		//ActionListener Los-Button, Jona (Events)
 		button.addActionListener(new ActionListener(){
@@ -115,7 +129,7 @@ public class MainWindow {
 				String Eingabe = field.getText();
 				field.setText("");
 				
-				//Buchstaben rot färben
+				//Buchstaben rot fï¿½rben
 				for(int i=0; i < 26; i++) {
 						
 					if(Eingabe.equalsIgnoreCase(letter[i].getText())){
@@ -139,15 +153,15 @@ public class MainWindow {
 		if(spielende == true) {
 			
 			if(gewonnen == true) {
-				endetext.setText("Du hast das Spiel gewonnen! Möchtest du das Programm neustarten?");
-				ende.pack();
-				ende.setLocationRelativeTo(null);
-				ende.setVisible(true);
+				endetext.setText("Du hast das Spiel gewonnen! Mï¿½chtest du das Programm neustarten?");
+				this.ende.pack();
+				this.ende.setLocationRelativeTo(null);
+				this.ende.setVisible(true);
 			}else {
-				endetext.setText("Du hast leider verloren! Möchtest du das Programm neustarten?");
-				ende.pack();
-				ende.setLocationRelativeTo(null);
-				ende.setVisible(true);
+				endetext.setText("Du hast leider verloren! Mï¿½chtest du das Programm neustarten?");
+				this.ende.pack();
+				this.ende.setLocationRelativeTo(null);
+				this.ende.setVisible(true);
 			};
 		};
 		
