@@ -30,6 +30,19 @@ public class Hangman {
 		
 	}
 	
+	public static void reloadGame () {
+		
+		win_main.setPanel("game");
+		win_main.GamePanel.buildLetters();
+		
+		writtenLetters = 0;
+		wrongLetters = 0;
+		
+		win_main.exit();
+		win_start.show();
+		
+	}
+	
 	public static void startGame ( String type, String value ) throws Exception {
 		
 		win_start.exit();
@@ -41,6 +54,7 @@ public class Hangman {
 		
 		win_main.setWordLength( wordArray.length );		
 		win_main.startUp();
+		win_main.show();
 		win_main.setImageIcon( graphic.getFirst() );
 		
 		ev = new Event( win_main.window );
@@ -65,7 +79,8 @@ public class Hangman {
 				.forEach( o -> wordArray[(int) o] = '-' );
 			
 			if ( writtenLetters == wordArray.length ) { // you win
-				JOptionPane.showMessageDialog( win_main.window, "Du hast gewonnen!" );
+				win_main.setPanel("end");
+				win_main.EndPanel.doWin();
 			}
 			
 		} else { // falsche Eingabe
@@ -75,7 +90,8 @@ public class Hangman {
 			win_main.setImageIcon( graphic.getNext() );
 			
 			if ( wrongLetters >= 10 ) { // you win
-				JOptionPane.showMessageDialog( win_main.window, "Du hast verloren!" );
+				win_main.setPanel("end");
+				win_main.EndPanel.doEnd();
 			}
 		}
 		
@@ -87,6 +103,10 @@ public class Hangman {
 			if ( wordArray[i] == letter )
 				list.add( i );
 		return list;
+	}
+	
+	public static boolean isWin () {
+		return System.getProperty("os.name").startsWith("Windows");
 	}
 	
 }

@@ -4,6 +4,8 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import de.hangman.Hangman;
+
 public class wordManagement {
 	
 	private String type; // [input;random] Working Type (Wort wird eingegebnen oder random wort)
@@ -27,7 +29,12 @@ public class wordManagement {
 	
 	private char[] genRandomWord () throws Exception {
 		
-		File Wordliste = new File("src/de/hangman/wordManagement/wortliste.txt");
+		File Wordliste;
+		
+		if ( Hangman.isWin() )
+			Wordliste = new File("src\\de\\hangman\\wordManagement\\wortliste.txt");
+		else
+			Wordliste = new File("src/de/hangman/wordManagement/wortliste.txt");
 		
 		Scanner textScanner = new Scanner(Wordliste);
 		Scanner input = new Scanner(System.in);

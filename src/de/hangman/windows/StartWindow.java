@@ -17,8 +17,12 @@ public class StartWindow {
 		
 	}
 	
+	public void show () {
+		this.window.setVisible(true);
+	}
+	
 	public void exit () {
-		this.window.dispose();
+		this.window.setVisible(false);
 	}
 
 	private void init() {
@@ -30,6 +34,7 @@ public class StartWindow {
 		this.window.setResizable(false);
 		this.window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		fehler.setResizable(false);
+		
 		
 		//Content erstellen (window)
 		JPanel panel = new JPanel();
