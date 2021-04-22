@@ -14,26 +14,30 @@ public class Graphic {
 	
 	public Graphic () {
 		
+		// chance paht if the os is windows or not
 		if ( Hangman.isWin() )
-			this.path = "src\\de\\hangman\\graphic\\images\\";
+			this.path = "src\\de\\hangman\\graphic\\imgs\\";
 		else
-			this.path = "src/de/hangman/graphic/images/";
+			this.path = "src/de/hangman/graphic/imgs/";
 		
 	}
 	
 	public ImageIcon getFirst () throws Exception {
+		// return first image
 		return this.getImg( 1 );
 	}
 	
 	public ImageIcon getNext () throws Exception {
 		
+		// count up and get new image
 		this.imageCouter++;
 		return this.getImg( this.imageCouter + 1 );
 		
 	}
 	
 	private ImageIcon getImg( int number ) throws Exception {
-		return new ImageIcon( new ImageIcon( Toolkit.getDefaultToolkit().getImage(this.path+"Hangman_"+number+".jpeg") )
+		// get image from number with a 200x200 scale
+		return new ImageIcon( new ImageIcon( Toolkit.getDefaultToolkit().getImage(this.path+"img"+number+".png") )
 				.getImage()
 				.getScaledInstance(200, 200, java.awt.Image.SCALE_SMOOTH) );
 	}

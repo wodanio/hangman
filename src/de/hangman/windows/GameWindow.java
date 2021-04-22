@@ -83,14 +83,14 @@ public class GameWindow {
 	private void init () {
 		
 		//Fenster main erstellen
-		this.window	= new JFrame();
+		this.window	= new JFrame("Hangman v2.2");
 		
 		// Window Panels
 		this.GamePanel = new GamePanel( this.wordLength );
 		this.EndPanel = new EndPanel();
 		
 		// Grundlagen Main Window
-		this.window.setSize(440, 460);
+		this.window.setSize(700, 460);
 		this.window.setLocationRelativeTo(null);
 		this.window.setResizable(false);
 		this.window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

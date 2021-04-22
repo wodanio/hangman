@@ -23,13 +23,13 @@ public class GamePanel extends JPanel {
 		setLayout(null);
 		
 		this.grafikpanel = new JPanel();
-		this.grafikpanel.setBounds(120, 5, 200, 200);
+		this.grafikpanel.setBounds(250, 5, 200, 200);
 		this.buchstabenpanel1 = new JPanel();
-		this.buchstabenpanel1.setBounds(20, 320, 420, 40);
+		this.buchstabenpanel1.setBounds(20, 320, 660, 50);
 		this.buchstabenpanel2 = new JPanel();
-		this.buchstabenpanel2.setBounds(2, 360, 420, 50);
+		this.buchstabenpanel2.setBounds(20, 360, 660, 50);
 		this.wortpanel = new JPanel();
-		this.wortpanel.setBounds(10, 220, 425, 50);
+		this.wortpanel.setBounds(10, 220, 680, 50);
   		
   		this.imageicon = new JLabel();
   		this.imageicon.setVisible(true);
@@ -64,7 +64,7 @@ public class GamePanel extends JPanel {
 		
 		String[] abc = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
 		this.letters = new JLabel[26];
-		this.buchstabenpanel1.setLayout(new BoxLayout(this.buchstabenpanel1, BoxLayout.X_AXIS));
+		//this.buchstabenpanel1.setLayout(new BoxLayout(this.buchstabenpanel1, BoxLayout.X_AXIS));
 	    for (int i = 0; i < 14; i++) {
 	    		this.letters[i] = new JLabel(abc[i]);
 		    	Font font = new Font("Arial", Font.PLAIN, 42);
