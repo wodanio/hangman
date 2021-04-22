@@ -27,7 +27,7 @@ public class wordManagement {
 	
 	private char[] genRandomWord () throws Exception {
 		
-		File Wordliste = new File("wortliste.txt");
+		File Wordliste = new File("src/de/hangman/wordManagement/wortliste.txt");
 		
 		Scanner textScanner = new Scanner(Wordliste);
 		Scanner input = new Scanner(System.in);
@@ -42,12 +42,20 @@ public class wordManagement {
 		
 	}
 	
+	private char[] toUpperCase ( char[] arr ) {
+		
+		for ( int i = 0; i < arr.length; i++ )
+			arr[i] = Character.toUpperCase( arr[i] );
+		
+		return arr;
+	}
+	
 	public char[] getWordArray () throws Exception {
 		
 		if ( "manual".equals( this.type ) ) {
-			return this.checkInput();
+			return this.toUpperCase( this.checkInput() );
 		} else if ( "auto".equals( this.type ) )  {
-			return this.genRandomWord();
+			return this.toUpperCase( this.genRandomWord() );
 		}
 		
 		return null;

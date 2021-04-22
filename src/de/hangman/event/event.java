@@ -33,7 +33,11 @@ public class Event extends JFrame implements KeyListener {
 		
 		for ( int i = 0; i < validCharsA.length; i++ )
 			if (letter == validCharsA[i] || letter == Character.toUpperCase(validCharsA[i]) ) {
-				Hangman.action( letter );
+				try {
+					Hangman.action( Character.toUpperCase( letter ) );
+				} catch ( Exception ee ) {
+					System.err.println( ee );
+				}
 			}
 		
 	}

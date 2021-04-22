@@ -1,66 +1,92 @@
 package de.hangman;
 
-<<<<<<< HEAD
+import java.util.ArrayList;
+import java.util.Arrays;
+
+import javax.swing.JOptionPane;
+
 import de.hangman.event.Event;
+import de.hangman.graphic.Graphic;
 import de.hangman.windows.GameWindow;
 import de.hangman.windows.StartWindow;
 import de.hangman.wordManagement.wordManagement;
-=======
-import de.hangman.xyz.XYZ;
-
-public class Hangman {
->>>>>>> c769026851b3220dfe7533712afa98b01c4a97d3
 
 public class Hangman {
 	
-	/*private static char[] wordArray;
+	private static char[] wordArray;
+	private static int writtenLetters = 0;
+	private static int wrongLetters = 0;
 	
 	private static StartWindow win_start;
 	private static GameWindow win_main;
 	private static wordManagement wm;
-	private static Event ev;*/
+	private static Event ev;
+	private static Graphic graphic;
 	
 	public static void main(String[] args) {
-<<<<<<< HEAD
-=======
-		
-		//System.out.print( "This is Hangman" );
-		
-		String way = "way1";
-		
-		XYZ worker = new XYZ( way );
-		
-		worker.doAnything( " yes test" );
-		
-		System.out.println( "New Stat: " + worker.getWay() );
->>>>>>> c769026851b3220dfe7533712afa98b01c4a97d3
 
-		//win_start = new StartWindow();
-		//win_main = new GameWindow();
-		
-		System.out.println( "TEST" );
+		win_start = new StartWindow();
+		win_main = new GameWindow();
 		
 	}
 	
 	public static void startGame ( String type, String value ) throws Exception {
 		
-		/*win_start.exit();
+		win_start.exit();
 		
 		wm = new wordManagement( type, value );
 		wordArray = wm.getWordArray();
 		
-		//System.out.print( wordArray );
+		graphic = new Graphic();
 		
-		win_main.startUp();*/
+		win_main.setWordLength( wordArray.length );		
+		win_main.startUp();
+		win_main.setImageIcon( graphic.getFirst() );
 		
-		//ev = new Event( win_main.main );
+		ev = new Event( win_main.window );
 		
 	}
 	
-	public static void action ( char letter ) {
+	public static void action ( char letter ) throws Exception {
 		
+		ArrayList list = letterInWord( letter );
+		int letterNum = list.size();
 		
+		writtenLetters += letterNum;
 		
+		win_main.delLetter( String.valueOf( letter ) );
+		
+		if ( letterNum > 0 ) { // richtige Eingabe
+			
+			list.stream()
+				.forEach( o -> win_main.setLetter( (int) o, String.valueOf( letter ) ) );
+			
+			list.stream()
+				.forEach( o -> wordArray[(int) o] = '-' );
+			
+			if ( writtenLetters == wordArray.length ) { // you win
+				JOptionPane.showMessageDialog( win_main.window, "Du hast gewonnen!" );
+			}
+			
+		} else { // falsche Eingabe
+			
+			wrongLetters++;
+			
+			win_main.setImageIcon( graphic.getNext() );
+			
+			if ( wrongLetters >= 10 ) { // you win
+				JOptionPane.showMessageDialog( win_main.window, "Du hast verloren!" );
+			}
+		}
+		
+	}
+	
+	public static ArrayList letterInWord ( char letter ) throws Exception {
+		ArrayList<Integer> list = new ArrayList<Integer>();
+		for ( int i = 0; i < wordArray.length; i++ )	
+			if ( wordArray[i] == letter )
+				list.add( i );
+		return list;
 	}
 	
 }
